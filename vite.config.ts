@@ -14,8 +14,12 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    },
+      // Optional aliases for cleaner imports
+      '@': path.resolve(__dirname, './src'),
+      '@components': path.resolve(__dirname, './src/components'),
+      '@pages': path.resolve(__dirname, './src/pages'),
+      '@files': path.resolve(__dirname, './src/files')
+    }
   },
   css: {
     preprocessorOptions: {
