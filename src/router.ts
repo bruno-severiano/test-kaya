@@ -20,7 +20,7 @@ const routes = [
       if (match) {
         next()
       } else {
-        // 3. Optional: redirect to 404 or homepage if path not matched
+        // REDIRECTO TO HOMEPAGE IF 404
         next('/')
       }
     }
