@@ -10,7 +10,7 @@
                             href="/"
                             v-if="route.path !== '/'"
                         >
-                            All Reports
+                            <- All Reports
                         </a>
                         <span v-else class="nav-link active fw-bold">
                             All Reports
