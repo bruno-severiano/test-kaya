@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router' // ← use hash history
 import HomePage from './pages/home.vue'
 import ReportSingle from './pages/ReportSingle.vue'
 import reports from './files/reports.json'
@@ -14,11 +14,7 @@ const routes = [
     path: '/:catchAll(.*)*',
     name: 'report',
     component: ReportSingle,
-    beforeEnter: (
-      to: RouteLocationNormalized,
-      from: RouteLocationNormalized,
-      next: NavigationGuardNext
-    ) => {
+    beforeEnter: (to, from, next: NavigationGuardNext) => {
       const match = reports.find(report => report.path === to.path)
       if (match) {
         next()
