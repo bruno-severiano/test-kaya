@@ -6,6 +6,10 @@ This is a test developed by Bruno using VUE 3.
 
 https://cozy-torrone-6ca149.netlify.app/
 
+## NPM and Node
+
+I've used NPM 10.9.2 and Node v22.17.0
+
 ## Project Setup
 
 ```sh
