@@ -17,12 +17,12 @@
             :title="item.title"
             v-if="item.backgroundImageUrl"
         >
-        <figure class="card-image">
+        <figure class="card-image text-center">
             <img
-            class="img-fluid"
-            loading="lazy"
-            :src="item.backgroundImageUrl"
-            :alt="item.title"
+                class="img-fluid"
+                loading="lazy"
+                :src="imageSrc"
+                :alt="item.title"
             >
         </figure>
         </a>
@@ -73,7 +73,7 @@
 </style>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
+import { defineProps, ref, onMounted } from 'vue'
 
 const props = defineProps({
   item: {
@@ -82,5 +82,18 @@ const props = defineProps({
   }
 })
 
-const { item } = props
+const fallbackImage = 'https://cdn-icons-png.flaticon.com/512/13434/13434972.png'
+const imageSrc = ref(fallbackImage)
+
+onMounted(() => {
+  const testImg = new Image()
+  testImg.onload = () => {
+    imageSrc.value = props.item.backgroundImageUrl
+  }
+  testImg.onerror = () => {
+    imageSrc.value = fallbackImage
+  }
+
+  testImg.src = props.item.backgroundImageUrl
+})
 </script>
