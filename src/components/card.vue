@@ -8,7 +8,7 @@
             {{ item.theme }}
             <span class="badge text-bg-light">
                 <time :datetime="item.dateUpdated ? item.dateUpdated : item.datePublished.split('/').reverse().join('-')">
-                {{ item.dateUpdated ? item.dateUpdated.split('-').reverse().join('/') : item.datePublished.split('-').reverse().join('/') }}
+                    {{ item.dateUpdated ? item.dateUpdated.split('-').reverse().join('/') : item.datePublished.split('-').reverse().join('/') }}
                 </time>
             </span>
         </div>
