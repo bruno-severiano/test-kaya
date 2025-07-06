@@ -1,34 +1,29 @@
 import { createRouter, createWebHistory } from 'vue-router'
-//import HomePage from './App.vue'
 import HomePage from './pages/home.vue'
 import ReportSingle from './pages/ReportSingle.vue'
+import reports from './files/reports.json'
 
-
+//HOMEPAGE
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomePage
   },
+  //SINPLE REPORT PAGES BASED ON PATH
   {
-    path: '/client-reports-q1-creative',
-    name: 'report-001',
-    component: ReportSingle
-  },
-  {
-    path: '/client-reports-hooks-march',
-    name: 'insight-report-027',
-    component: ReportSingle
-  },
-  {
-    path: '/client-reports-kpi-april',
-    name: 'report-013',
-    component: ReportSingle
-  },
-  {
-    path: '/client-reports-coin-2025',
-    name: 'insight-report-020',
-    component: ReportSingle
+    path: '/:catchAll(.*)*',
+    name: 'report',
+    component: ReportSingle,
+    beforeEnter: (to, from, next) => {
+      const match = reports.find(report => report.path === to.path)
+      if (match) {
+        next()
+      } else {
+        // 3. Optional: redirect to 404 or homepage if path not matched
+        next('/')
+      }
+    }
   }
 ]
 
